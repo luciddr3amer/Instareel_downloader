@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Instamine</title>
+  <style>
+    body {
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-top: 50px;
+    }
+
+    .success {
+      color: green;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 50px;
+    }
+
+    .button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #3e8e41;
+    }
+  </style>
+</head>
+<body>
+  <h1>InstaMine</h1>
+  <p class="success">Downloaded Successfully</p>
+  <div class="buttons">
+    <a href="{{url_for('download')}}" class="button">click to download</a>
+    <a href="{{url_for('index')}}" class="button" >Home</a>
+    
+
+  </div>
+</body>
+</html>

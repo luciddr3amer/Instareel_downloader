@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InstaMine</title>
+    <style>
+           .form {
+        margin: auto;
+        width: 40%;
+        padding: 50px;
+        text-align: center;
+      }
+      input[type="text"] {
+        width: 70%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+      }
+      input[type="submit"] {
+        width: 20%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+      /* some basic styling for the page */
+      body {
+        background-color: #f2f2f2;
+      }
+      h1 {
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        color: #333;
+        margin-bottom: 50px;
+      }
+    </style>
+    <script>
+      function download() {
+        var url = document.getElementById("url").value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/download", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            var json = JSON.parse(xhr.responseText);
+            console.log(json.url);
+            window.location.href = json.url;
+          }
+        };
+        var data = JSON.stringify({ "url": url });
+
+        xhr.send(data);
+      }
+
+      document.getElementById("download").addEventListener("click", download);
+
+
+    </script>
+  </head>
+  <body>
+    <h1>Instagram Reels Downloader</h1>
+    <div class="form">
+      <form method="post" action="/">
+        <label for="url">Enter Instagram Reels video URL:</label>
+        <br>
+        <input type="text" id="url" name="url" placeholder="https://www.instagram.com/reel/1234567890">
+
+        <br><br>
+        <input type="submit" value="Download" id="download" name="download" onclick=download()>
+
+
+      </form> 
+    </div>
+    
+  </body>
+</html>
